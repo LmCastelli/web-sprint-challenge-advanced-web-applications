@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { useParams } from 'react-router';
 
 const initialArticle = {
     id:"",
@@ -12,6 +14,7 @@ const initialArticle = {
 const EditForm = (props)=> {
     const [article, setArticle]  = useState(initialArticle);
     const {handleEdit, handleEditCancel, editId} = props;
+    const {id} = useParams();
 
     const handleChange = (e)=> {
         setArticle({
@@ -30,6 +33,17 @@ const EditForm = (props)=> {
         e.preventDefault();
         handleEditCancel();
     }
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/articles/${editId}`)
+        .then(resp=> {
+            setArticle(resp.data);
+        })
+        .catch(err=> {
+            console.log(err)
+        })
+    },[])
 
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
