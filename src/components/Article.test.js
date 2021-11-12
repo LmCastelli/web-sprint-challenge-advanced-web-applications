@@ -5,8 +5,23 @@ import userEvent from '@testing-library/user-event';
 import MutationObserver from 'mutationobserver-shim';
 
 import Article from './Article';
+import { render, screen, waitFor } from 'react-dom';
+import LambdaHeader from './LambdaHeader';
 
-test('renders component without errors', ()=> {
+
+const fakeArticle = {
+    id:7,
+    headline: "article stuff",
+    author: "me",
+    summary: "summary I guess",
+    body: "wowowow",
+    image: null,
+    createdOn: null
+}
+
+test("renders component without errors", async () => {
+    
+    
 });
 
 // test('renders headline, author from the article when passed in through props', ()=> {
