@@ -17,11 +17,25 @@ const App = () => {
       <RouteContainer>
         <Route exact path="/">
           <Login/>
-        </Route>          
+        </Route>       
+
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <PrivateRoute exact path="/view">
+          <View />
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/logout">
+          <Logout />
+        </PrivateRoute>
+
       </RouteContainer>
     </AppContainer>
   )
 }
+
 
 export default App;
 
