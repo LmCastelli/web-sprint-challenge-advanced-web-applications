@@ -38,22 +38,19 @@ test('renders headline, author from the article when passed in through props', a
 test('renders "Associated Press" when no author is given', async ()=> {
     render(<Article article={fakeArticle} />);
 
-    const otherAuthor = await screen.queryByAltText("Associated Press");
+    const otherAuthor = await screen.findByText(/by associated press/i);
     expect(otherAuthor).toBeInTheDocument();
 });
 
-test('executes handleDelete when the delete button is pressed', ()=> {
+test('executes handleDelete when the delete button is pressed', async ()=> {
 
     const fakeDelete = jest.fn();
 
     render(<Article article={fakeArticle} handleDelete={fakeDelete} />);
-    const button = screen.getByRole('button');
+    const button = await screen.getByTestId('deleteButton');
     userEvent.click(button);
 
-    // await waitFor(()=> {
-    //     expect(fakeDelete).toHaveBeenCalled();
-    // })
-
+   expect(fakeDelete).toHaveBeenCalled();
 
     
 });
