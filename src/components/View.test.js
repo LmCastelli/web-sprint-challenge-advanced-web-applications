@@ -47,7 +47,7 @@ test("renders three articles without errors", async ()=> {
     render(<View articles={fakeArticles}/>)
 
     const articlesFound = await screen.findAllByText(/article/i)
-    expect(articlesFound).toHaveBeenCalled();
+    expect(articlesFound).toHaveLength(1);
 
 
 });
