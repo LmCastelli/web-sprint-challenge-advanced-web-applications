@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 
 import userEvent from '@testing-library/user-event';
 import MutationObserver from 'mutationobserver-shim';
-import articleService from '../services/articleServices';
+
 import Article from './Article';
 import { render, screen, waitFor } from '@testing-library/react';
 import LambdaHeader from './LambdaHeader';
